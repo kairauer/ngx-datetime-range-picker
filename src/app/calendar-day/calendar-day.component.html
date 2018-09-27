@@ -1,0 +1,50 @@
+<ul class="weekdays">
+  <li>
+    <abbr title="S">S</abbr>
+  </li>
+  <li>
+    <abbr title="M">M</abbr>
+  </li>
+  <li>
+    <abbr title="T">D</abbr>
+  </li>
+  <li>
+    <abbr title="W">M</abbr>
+  </li>
+  <li>
+    <abbr title="T">D</abbr>
+  </li>
+  <li>
+    <abbr title="F">F</abbr>
+  </li>
+  <li>
+    <abbr title="S">S</abbr>
+  </li>
+</ul>
+
+<ul class="day-grid">
+  <!-- <li *ngFor="let day of days" [ngClass]="{
+      'no-date': day == null,
+      'start': day && _month+'-'+(day.toString().length === 1 ? '0'+day : day) === _startDate,
+      'end': day && _month+'-'+(day.toString().length === 1 ? '0'+day : day) === _endDate,
+      'between': day && _month+'-'+(day.toString().length === 1 ? '0'+day : day) > _startDate &&
+                        _month+'-'+(day.toString().length === 1 ? '0'+day : day) < _endDate,
+      'hover': day && (
+                     ( _month+'-'+(day.toString().length === 1 ? '0'+day : day) > hoverDate &&
+                       _month+'-'+(day.toString().length === 1 ? '0'+day : day) < _startDate ) ||
+                     ( _month+'-'+(day.toString().length === 1 ? '0'+day : day) < hoverDate &&
+                       ( _endDate === '0000-00-00' || _endDate === null || !_endDate) &&
+                       _month+'-'+(day.toString().length === 1 ? '0'+day : day) > _startDate )
+      )
+    }"
+    (click)="selectDate(day)" (mouseover)="onMouseOver($event, day)" (mouseleave)="onMouseLeave($event, day)"> -->
+  <li *ngFor="let day of days" [ngClass]="{
+      'no-date': day == null,
+      'start': day != null && day.date != null && startDate != null && day.date.toISOString() === startDate.toISOString(),
+      'end': day != null && day.date != null && endDate != null && day.date.toISOString() === endDate.toISOString(),
+      'between': day != null && day.date > startDate && day.date < endDate
+    }"
+    (click)="selectDate(day)" (mouseover)="onMouseOver($event, day)" (mouseleave)="onMouseLeave($event, day)">
+    {{ day.label || '' }}
+  </li>
+</ul>

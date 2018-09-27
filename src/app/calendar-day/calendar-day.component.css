@@ -1,0 +1,60 @@
+ul {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 0px;
+  margin: 0 auto;
+  max-width: 64em;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin-left: 0;
+  font-size: 12px;
+}
+
+ul.weekdays {
+  margin-bottom: 10px;
+}
+
+ul.day-grid li {
+  font-weight: bold;
+  padding: 10px;
+  max-height: 125px;
+  min-width: 16px;
+}
+
+ul.day-grid li:not(.no-date):not(.start):not(.end):hover {
+  cursor: pointer;
+  background-color: #70b6ff;
+  color: white;
+  border-radius: 5px;
+}
+ul.day-grid li.between {
+  background-color: #c2e0ff;
+}
+ul.day-grid li.hover {
+  background-color: #e8f3ff;
+}
+ul.day-grid li.start,
+ul.day-grid li.end {
+  background-color: #409eff;
+  color: white;
+}
+ul.day-grid li.start {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+ul.day-grid li.end {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+ul.weekdays abbr[title] {
+  border: none;
+  font-weight: 800;
+  text-decoration: none;
+}

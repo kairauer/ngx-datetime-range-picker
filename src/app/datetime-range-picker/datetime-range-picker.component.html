@@ -1,0 +1,52 @@
+<div class="datetime-range-picker-wrapper">
+  <div class="input-container" [ngClass]="{'invalid': startValid === false}">
+    <div class="icon"></div>
+    <input class="input-field" type="text" placeholder="Hinflug" name="hinflug" (focus)="focus('start')" (blur)="blur('start')"
+      [ngModel]="startDate | date:dateFormat" (ngModelChange)="startChanged($event)">
+  </div>
+
+  <div class="input-container" [ngClass]="{'invalid': endValid === false}">
+    <div class="icon"></div>
+    <input class="input-field" type="text" placeholder="Rückflug" name="rückflug" (focus)="focus('end')" (blur)="blur('end')"
+      [ngModel]="endDate | date:dateFormat" (ngModelChange)="endChanged($event)">
+  </div>
+
+  <div class="calendar" [hidden]="!calendarOpen" (click)="clickedInside($event)">
+    <div class="calendar-controls">
+      <button class="icon-btn" (click)="prevMonth()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+          <path d="M4 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z" transform="translate(1)" />
+        </svg>
+      </button>
+      <div class="month-name">
+        <span (click)="monthClicked(0)">
+          {{ monthNames[startMonth] }}
+        </span>
+        <span>
+          {{startYear}}
+        </span>
+      </div>
+      <div class="month-name">
+        <span (click)="monthClicked(1)">
+          {{ monthNames[endMonth] }}
+        </span>
+        <span>
+          {{endYear}}
+        </span>
+      </div>
+      <button class="icon-btn" (click)="nextMonth()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
+          <path d="M1.5 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z" transform="translate(1)" />
+        </svg>
+      </button>
+    </div>
+    <div class="calender-wrapper">
+      <app-calendar [startDate]="startDate" [endDate]="endDate" [hoverDate]="hoverDate" [monthNames]="monthNames"
+        [view]="startView" [month]="startMonth" [year]="startYear" (daySelected)="daySelected($event)" (dateHover)="dateHover($event)"
+        (monthSelected)="monthSelected($event, 0)"></app-calendar>
+      <app-calendar [startDate]="startDate" [endDate]="endDate" [hoverDate]="hoverDate" [monthNames]="monthNames"
+        [view]="endView" [month]="endMonth" [year]="endYear" (daySelected)="daySelected($event)" (dateHover)="dateHover($event)"
+        (monthSelected)="monthSelected($event, 1)"></app-calendar>
+    </div>
+  </div>
+</div>

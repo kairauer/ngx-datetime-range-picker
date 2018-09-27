@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.datetime-range-picker-wrapper {
+  display: flex;
+  position: relative;
+}
+
+/* Style the input container */
+.input-container {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+  max-width: 300px;
+  border-radius: 5px;
+}
+
+.input-container.invalid input {
+  border-right: 4px solid red;
+}
+
+/* Style the form icons */
+.input-container .icon {
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  min-width: 37px;
+  text-align: center;
+  background-color: white;
+  background-size: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("./../../assets/calendar.svg");
+}
+
+/* Style the input fields */
+.input-field {
+  border: none;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.icon-btn {
+  border: none;
+  background: transparent;
+  width: 5%;
+}
+
+button.icon-btn:hover > svg {
+  fill: rgb(41, 74, 128);
+}
+
+button.icon-btn svg {
+  height: 12px;
+  width: 12px;
+}
+
+.calendar-controls {
+  display: flex;
+  margin: 10px 0px 20px 0px;
+}
+
+.month-name {
+  width: 45%;
+  text-align: center;
+  font-weight: bold;
+}
+.month-name span:hover {
+  color: #409eff;
+  cursor: pointer;
+}
+
+.calendar {
+  background-color: white;
+  position: absolute;
+  top: 48px;
+  left: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.calender-wrapper {
+  display: flex;
+}
+
+.calender-wrapper app-calendar:first-child {
+  margin-right: 30px;
+}

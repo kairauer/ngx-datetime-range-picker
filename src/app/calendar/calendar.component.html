@@ -1,0 +1,5 @@
+<ng-container [ngSwitch]="view">
+  <app-calendar-day *ngSwitchCase="'day'" [startDate]="startDate" [endDate]="endDate" [hoverDate]="hoverDate" [month]="month"
+    [year]="year" (dateSelected)="onSelectDate($event)" (dateHover)="onDateHover($event)"></app-calendar-day>
+  <app-calendar-month *ngSwitchCase="'month'" [monthNames]="monthNames" (monthSelected)="onMonthSelected($event)"></app-calendar-month>
+</ng-container>
