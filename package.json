@@ -1,6 +1,6 @@
 {
-  "name": "datetime-range-picker",
-  "version": "0.0.0",
+  "name": "ngx-datetime-range-picker",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
