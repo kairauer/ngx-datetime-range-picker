@@ -162,19 +162,28 @@ export class DatetimeRangePickerComponent implements OnInit {
     this.hoverDate = $event;
   }
 
-  public monthSelected($event: string, calendarIndex: number) {
+  public monthSelected(month: number, calendarIndex: number) {
     if (calendarIndex === 0) {
+      this.startMonth = month;
       this.startView = "day";
     } else {
+      this.endMonth = month;
       this.endView = "day";
     }
   }
 
   public monthClicked(calendarIndex: number) {
+    let nextView = "month";
     if (calendarIndex === 0) {
-      this.startView = "month";
+      if (this.startView === "month") {
+        nextView = "day";
+      }
+      this.startView = nextView;
     } else {
-      this.endView = "month";
+      if (this.endView === "month") {
+        nextView = "day";
+      }
+      this.endView = nextView;
     }
   }
 }

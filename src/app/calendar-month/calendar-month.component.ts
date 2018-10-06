@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input,
   Output,
   EventEmitter,
@@ -17,15 +16,15 @@ export class CalendarMonthComponent {
   @Input()
   monthNames: Array<string>;
   @Output()
-  monthSelected: EventEmitter<string> = new EventEmitter();
+  monthSelected: EventEmitter<number> = new EventEmitter();
 
   constructor() {}
 
   public selectMonth(monthIndex: number) {
-    const monthString =
-      monthIndex.toString().length === 1
-        ? "0" + monthIndex
-        : monthIndex.toString();
-    this.monthSelected.emit(monthString);
+    // const monthString =
+    //   monthIndex.toString().length === 1
+    //     ? "0" + monthIndex
+    //     : monthIndex.toString();
+    this.monthSelected.emit(monthIndex);
   }
 }
