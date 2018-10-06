@@ -18,13 +18,13 @@ export class DatetimeRangePickerComponent implements OnInit {
   public startDate: Date;
   public endDate: Date;
   public hoverDate: Date;
-  public startYear: number = 2018;
-  public startMonth: number = 7;
-  public endYear: number = 2018;
-  public endMonth: number = 8;
+  public startYear: number;
+  public startMonth: number;
+  public endYear: number;
+  public endMonth: number;
   public startValid: boolean;
   public endValid: boolean;
-  public startView: string = "month";
+  public startView: string = "day";
   public endView: string = "day";
   public dateFormat: string = "dd.MM.yyyy";
   public dateRegex: RegExp = /[0-9]{2}.[0-9]{2}.[0-9]{4}/;
@@ -44,7 +44,9 @@ export class DatetimeRangePickerComponent implements OnInit {
   ];
   // private dateRegex: RegExp = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
 
-  constructor() {}
+  constructor() {
+    this.calculateInitialMonthAndYear();
+  }
 
   @HostListener("document:click", ["$event"])
   clickedOutside($event) {
@@ -184,6 +186,20 @@ export class DatetimeRangePickerComponent implements OnInit {
         nextView = "day";
       }
       this.endView = nextView;
+    }
+  }
+
+  private calculateInitialMonthAndYear() {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    this.startYear = currentYear;
+    this.startMonth = currentMonth;
+    if (currentMonth === 11) {
+      this.endYear = currentYear + 1;
+      this.endMonth = 0;
+    } else {
+      this.endYear = currentYear;
+      this.endMonth = currentMonth + 1;
     }
   }
 }
