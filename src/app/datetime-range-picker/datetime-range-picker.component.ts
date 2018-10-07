@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   HostListener,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  EventEmitter,
+  Output
 } from "@angular/core";
 import * as dateFnsParse from "date-fns/parse";
 import * as isValid from "date-fns/isValid";
@@ -14,6 +16,11 @@ import * as isValid from "date-fns/isValid";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatetimeRangePickerComponent implements OnInit {
+  @Output()
+  dateRangeChanged: EventEmitter<{
+    start: Date;
+    end: Date;
+  }> = new EventEmitter();
   public calendarOpen: boolean = true;
   public startDate: Date;
   public endDate: Date;
@@ -126,6 +133,7 @@ export class DatetimeRangePickerComponent implements OnInit {
     } else if (!this.startDate && this.endDate) {
       this.startDate = selectedDate;
     }
+    this.emitRangeChange();
   }
 
   public startChanged($event) {
@@ -141,6 +149,7 @@ export class DatetimeRangePickerComponent implements OnInit {
         this.startValid = true;
       }
     }
+    this.emitRangeChange();
   }
 
   public endChanged($event) {
@@ -156,6 +165,7 @@ export class DatetimeRangePickerComponent implements OnInit {
         this.endValid = true;
       }
     }
+    this.emitRangeChange();
   }
 
   public dateHover($event) {
@@ -199,5 +209,12 @@ export class DatetimeRangePickerComponent implements OnInit {
       this.endYear = currentYear;
       this.endMonth = currentMonth + 1;
     }
+  }
+
+  private emitRangeChange() {
+    this.dateRangeChanged.emit({
+      start: this.startDate,
+      end: this.endDate
+    });
   }
 }
