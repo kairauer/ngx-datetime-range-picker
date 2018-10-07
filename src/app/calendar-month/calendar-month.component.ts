@@ -21,10 +21,6 @@ export class CalendarMonthComponent {
   constructor() {}
 
   public selectMonth(monthIndex: number) {
-    // const monthString =
-    //   monthIndex.toString().length === 1
-    //     ? "0" + monthIndex
-    //     : monthIndex.toString();
     this.monthSelected.emit(monthIndex);
   }
 }

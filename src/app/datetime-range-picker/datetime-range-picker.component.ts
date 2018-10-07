@@ -42,7 +42,6 @@ export class DatetimeRangePickerComponent implements OnInit {
     "November",
     "Dezember"
   ];
-  // private dateRegex: RegExp = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
 
   constructor() {
     this.calculateInitialMonthAndYear();
@@ -127,7 +126,6 @@ export class DatetimeRangePickerComponent implements OnInit {
     } else if (!this.startDate && this.endDate) {
       this.startDate = selectedDate;
     }
-    // console.log(`Start: ${this.startDate} ### End: ${this.endDate}`);
   }
 
   public startChanged($event) {

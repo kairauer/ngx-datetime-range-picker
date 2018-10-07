@@ -42,34 +42,17 @@ export class CalendarDayComponent implements OnChanges, OnInit {
   private _month: string;
   private mouseleaveTimeout: any;
   private dateRegex: RegExp = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-  // public _startDate: string;
-  // public _endDate: string;
   public days: Array<DateElement>;
 
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
-    // if (typeof changes.startDate !== "undefined") {
-    //   if (this.dateRegex.test(changes.startDate.currentValue)) {
-    //     this._startDate = changes.startDate.currentValue;
-    //   } else {
-    //     this._startDate = null;
-    //   }
-    // }
-    // if (typeof changes.endDate !== "undefined") {
-    //   if (this.dateRegex.test(changes.endDate.currentValue)) {
-    //     this._endDate = changes.endDate.currentValue;
-    //   } else {
-    //     this._endDate = null;
-    //   }
-    // }
     if (typeof changes.month !== "undefined" && !changes.month.firstChange) {
       this.days = this.generateDaysArray();
     }
     if (typeof changes.year !== "undefined" && !changes.month.firstChange) {
       this.days = this.generateDaysArray();
     }
-    // console.log(this.startDate);
   }
 
   ngOnInit() {
@@ -102,11 +85,6 @@ export class CalendarDayComponent implements OnChanges, OnInit {
     return day.toString().length === 1 ? "0" + day : day;
   }
 
-  private getFullDate(day) {
-    const twoDigitDay = this.getTwoDigitDay(day);
-    return this._month + "-" + twoDigitDay;
-  }
-
   public selectDate(day: DateElement) {
     if (day) {
       this.dateSelected.emit(day.date);
@@ -118,13 +96,6 @@ export class CalendarDayComponent implements OnChanges, OnInit {
     if (day !== null) {
       hoverDate = day.date;
     }
-    // console.log("[mouse-over]", day.date);
-    console.log(
-      day.date,
-      this.startDate,
-      day.date === this.startDate,
-      day.date == this.startDate
-    );
     this.dateHover.emit(hoverDate);
     clearTimeout(this.mouseleaveTimeout);
   }
