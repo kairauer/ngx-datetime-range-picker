@@ -39,7 +39,7 @@
     }"
     (click)="selectDate(day)" (mouseover)="onMouseOver($event, day)" (mouseleave)="onMouseLeave($event, day)"> -->
   <li *ngFor="let day of days" [ngClass]="{
-      'no-date': day == null,
+      'no-date': !day || day.date == null,
       'start': day != null && day.date != null && startDate != null && day.date.toISOString() === startDate.toISOString(),
       'end': day != null && day.date != null && endDate != null && day.date.toISOString() === endDate.toISOString(),
       'between': day != null && day.date > startDate && day.date < endDate

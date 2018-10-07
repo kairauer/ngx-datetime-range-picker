@@ -3,8 +3,6 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnChanges,
-  SimpleChanges,
   ChangeDetectionStrategy
 } from "@angular/core";
 
